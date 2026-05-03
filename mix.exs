@@ -65,12 +65,7 @@ defmodule Jfgenomics.MixProject do
       {:gettext, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"},
-      {:nimble_publisher, "~> 1.1.1"},
-      {:makeup_elixir, ">= 0.0.0"},
-      {:makeup_erlang, ">= 0.0.0"},
-      {:makeup_rust, "~> 0.3.0"},
-      {:makeup_syntect, "~> 0.1.4"}
+      {:bandit, "~> 1.5"}
     ]
   end
 
