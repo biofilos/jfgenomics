@@ -74,6 +74,9 @@ defmodule JfgenomicsWeb do
 
       # Include general helpers for rendering HTML
       unquote(html_helpers())
+
+      # Devicon component for inline SVG icons
+      import JfgenomicsWeb.Devicon
     end
   end
 

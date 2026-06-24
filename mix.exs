@@ -85,15 +85,11 @@ defmodule Jfgenomics.MixProject do
       "assets.build": [
         "compile",
         "tailwind jfgenomics",
-        "esbuild jfgenomics",
-        "cmd mkdir -p priv/static/assets/icons",
-        "cmd cp -r assets/vendor/devicon/icons/. priv/static/assets/icons/"
+        "esbuild jfgenomics"
       ],
       "assets.deploy": [
         "tailwind jfgenomics --minify",
         "esbuild jfgenomics --minify",
-        "cmd mkdir -p priv/static/assets/icons",
-        "cmd cp -r assets/vendor/devicon/icons/. priv/static/assets/icons/",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]

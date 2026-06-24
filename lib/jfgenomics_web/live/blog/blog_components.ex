@@ -64,24 +64,6 @@ defmodule JfgenomicsWeb.BlogComponents do
   end
 
   @doc """
-  Renders a multi-color devicon from devicon.dev via an SVG file.
-
-  ## Attributes
-  - `name` - the icon name (e.g., "elixir", "python")
-  - `variant` - the icon variant (e.g., "original", "plain", "original-wordmark")
-  - `class` - optional additional CSS classes
-  """
-  attr :name, :string, required: true
-  attr :variant, :string, default: "original"
-  attr :class, :string, default: "w-8 h-8 inline-block"
-
-  def devicon(assigns) do
-    ~H"""
-    <img src={"/assets/icons/#{@name}/#{@name}-#{@variant}.svg"} class={[@class]} alt="" />
-    """
-  end
-
-  @doc """
   Fetches remote source code and renders it with syntax highlighting.
   The fetch and highlighting happen client-side via a JS hook.
 
