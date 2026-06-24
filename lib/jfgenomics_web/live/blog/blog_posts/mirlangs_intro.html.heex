@@ -1,0 +1,131 @@
+<p>
+  The most challenging part of learning a new language is finding a starting point. Sure, there are tutorials and documentation that will tell you to "start from the beginning," but somehow that doesn't help. When I learned my first programming language during my masters, I did so fairly quickly because I had a problem that I needed to solve. See, I tried to learn programming during undergrad by following books and documentation, but it was just so unmotivating! I could not see how learning to code a shopping list or an address book help me in my career as a biologist.
+</p>
+<p>
+  Later during my masters, my professor asked me to get some data online and build some plots. So I did just that using a browser and Excell. She said, "great, now I need you to do the same with the rest of flaviviruses." "Which flaviviruses should we include?", I replied, and she smiled and said "all of them, of course." This is what I mean by "a problem that I needed to solve." All of a sudden, I had to find a way (definitely not Excell and a browser) to get, parse, and validate data, organize it, analyze, and plot it, at scale!
+</p>
+<p>
+  This brought me up to speed with programming quite quickly. Genomic sequences helped me understand arrays, graphs were clear when used to represent phylogenies, and so on. In this series, we will go through a learning path to understand basic and intermediate programming concepts by using real-world use cases in Genomics. The first installment will focus on Python, which is the language I am most familiar with, but I will document my own journey to learn other programming languages using this same approach.
+</p>
+<h2>The plan</h2>
+<p>
+  At the beginning of learning a new language, we will have to get it done and get some basic concepts the old-school way. Forcing analogies here just makes the whole experience unnecessarily contrived. Let's leave the comparisons for more interesting topics. After that is done, we will implement some interesting features and bioinformatics applications. Note that the idea is not to make "better versions of X," but to learn. And, yes, the whole point of this experience is to reinvent the wheel (see previous point).
+</p>
+<p>
+  Implementation note: Each post will consist of the code used for each application, with extensive annotations whenever I find an interesting feature of the language, or with explanations on how a particular syntactic construct works.
+</p>
+<p>
+  Implementation note: Each post will consist of the code used for each application, with extensive annotations whenever I find an interesting feature of the language, or with explanations on how a particular syntactic construct works.
+</p>
+<h3>Note</h3>
+
+<p>
+  This series is not a tutorial for absolute beginners. The target audience is people that have a good grasp on programming concepts who want to learn new programming languages by using common bioinformatics tasks. Of course, beginners are welcome, though some filling-in-the-blanks would be necessary.
+</p>
+<h3>Extra credit</h3>
+
+<p>
+  Each project will try to use the same (minimal) features of each language to develop a solution. This will allow us to have a baseline of comparison between languages. However, programming languages might have unique features that make them particularly well-suited for different applications. To learn about these features, each project will also have a section where the project will be re-implemented (if relevant) using any unique or optimized features of the language under study. It is important to note that this does not mean to find the optimal solution to data structures in genomics for each language. Remember, we are here to learn and explore. The main goal is to have an entertaining excuse (project) to learn and evaluate programming languages in the context of bioinformatics.
+</p>
+<h3>
+  Applications
+</h3>
+<table class="table overflow-x-auto rounded-box mx-auto">
+  <thead>
+    <th>Learn</th>
+    <th>By building</th>
+    <th>In the language</th>
+    <tbody>
+      <tr :for={row <- @post.table}>
+        <td>{row.learn}</td>
+        <td>{row.build}</td>
+        <td :for={lang <- row.implemented}>
+          <a href={~p"/blog/#{lang.post}"}>
+            <.devicon name={lang.name} variant={lang.variant} />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </thead>
+</table>
+<h4>
+  GFF3 parser: Basic data structures and parsing
+</h4>
+<p>
+  GFF3 is a file format commonly used to store genomic annotation. It is a text file with nine columns (plus comments) used to describe data associated with genomic locations. See the specification on the [GMOD website](https://gmod.org/wiki/GFF3). For this exercise, we will focus on parsing the human gene annotation from [Ensembl](https://ensembl.org) ([download link](https://ftp.ensembl.org/pub/release-114/gff3/homo_sapiens/Homo_sapiens.GRCh38.114.gff3.gz)).
+</p>
+<p>
+  In genomics (particularly in gene annotation), a _feature_ is a region of the genome with biological relevance. Genes, exons, mRNAs are features. The chromosome, start, and end of a feature are a feature's coordinates, and the attributes of a feature are called _annotations_. For example, the GFF3 record
+</p>
+<div class="flex justify-center">
+  <pre phx-no-curly-interpolation>
+  plaintext 1 ensembl_havana gene 450740 451678 . - .
+  ID=gene:ENSG00000284733;Name=OR4F29;biotype=protein_coding;description=olfactory
+  receptor family 4 subfamily F member 29
+</pre>
+</div>
+<p>
+  can be read as: The feature with ID _ENSG00000284733_ is an _olfactory receptor_
+  _gene_ named _OR4F29_, located in chromosome _1_, from position _450,740_ to
+  _451,678_ in the minus (`-`) strand.
+</p>
+<h5>
+  Objective
+</h5>
+
+<p>
+  Parse a given GFF file into a data structure that holds relevant data from the GFF record in a structured manner. This is going to require using most basic data structures available in a programming language. We will need:
+</p>
+<ul>
+  <li>String variables: to store gene IDs and gene attributes.</li>
+  <li>Integer variables: to store the genomic location of each feature.</li>
+  <li>Lists/arrays: to store each record in order.</li>
+  <li>Maps/structs: to store each genomic feature record and its attributes.</li>
+</ul>
+Example: the following GFF file
+<div class="flex justify-center">
+  <pre phx-no-curly-interpolation>
+  ##gff-version 3 chr1 program1 gene 1300 9000 . + .
+  ID=gene001;Name=somethingnase chr1 program2 gene 5000 8400 . - .
+  ID=gene012;Name=somenase
+  </pre>
+</div>
+<p>
+  will become an ordered list (or array, etc) of dictionaries (or maps, etc):
+</p>
+<div class="flex justify-center">
+  <pre phx-no-curly-interpolation>
+[
+    {
+        "region": "chr1",
+        "start": 1300,
+        "end": 9000,
+        "source": "program1",
+        "strand": "+",
+        "attrs": {
+            "id": "gene001",
+            "name": "somethingase"
+        }
+    },
+    {
+        "region": "chr1",
+        "start": 5000,
+        "end": 8400,
+        "source": "program2",
+        "strand": "-",
+        "attrs": {
+            "id": "gene012",
+            "name": "somenase"
+        }
+    }
+]
+</pre>
+</div>
+<p>
+  See how only some columns are going to be parsed. For this example, we are going to ignore the score (column 6) and phase (column 8). Those common can be useful when the annotations have a score associated with the quality of the annotation prediction, or when the feautre (specially CDS) start at 0, 1, or two bases after the cooridnate specified in the fourth and fifth columns. For curated annotation providers, this is usually not used, and allows us to test how easy is it to ignore or include fields in a parsed string.
+</p>
+
+<p>
+  Why in a list?<br />
+  The astute eye might see that storing data in an array is usually recommended only when the data is going to be read in order, which is not the case here. However, this design will help us gauge how different languages process lists, arrays, or similar data structures. In future implementations, we will be optimizing this approach by using sets, or other more performant data structures.
+</p>

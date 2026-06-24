@@ -82,10 +82,18 @@ defmodule Jfgenomics.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["compile", "tailwind jfgenomics", "esbuild jfgenomics"],
+      "assets.build": [
+        "compile",
+        "tailwind jfgenomics",
+        "esbuild jfgenomics",
+        "cmd mkdir -p priv/static/assets/icons",
+        "cmd cp -r assets/vendor/devicon/icons/. priv/static/assets/icons/"
+      ],
       "assets.deploy": [
         "tailwind jfgenomics --minify",
         "esbuild jfgenomics --minify",
+        "cmd mkdir -p priv/static/assets/icons",
+        "cmd cp -r assets/vendor/devicon/icons/. priv/static/assets/icons/",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]

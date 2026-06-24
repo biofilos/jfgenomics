@@ -24,6 +24,26 @@ defmodule Jfgenomics.Blog do
              description:
                "Learn and practice how basic data structures in Elixir work, we will build a program that transform a GFF3 file of genomic annotations into an object that we can sort and query more efficiently.",
              tags: ~w(bioinformatics elixir programming)
+           },
+           %{
+             id: "mirlangs_intro",
+             template: :mirlangs_intro,
+             title: "Learn new programming languages using Bioinformatics as an excuse",
+             author: "Juan Felipe Ortiz",
+             date: ~D[2025-04-28],
+             description:
+               "This series reveals how to build solid programming skills while diving into bioinformatics",
+             tags: ~w(bioinformatics programming),
+             table: [
+               %{
+                 learn: "Basic data structures",
+                 build: "GFF parser",
+                 implemented: [
+                   %{name: "elixir", variant: "original", post: "elixir-gff_parser"},
+                   %{name: "rust", variant: "original", post: "rust-gff_parser"}
+                 ]
+               }
+             ]
            }
          ]
          |> Enum.sort_by(& &1.date, {:desc, Date})

@@ -50,15 +50,6 @@ defmodule JfgenomicsWeb.BlogComponents do
   end
 
   @doc """
-  Fetches remote source code and renders it with syntax highlighting.
-  The fetch and highlighting happen client-side via a JS hook.
-
-  ## Attributes
-  - `url` - the raw source URL to fetch
-  - `lang` - the language for syntax highlighting
-  - `class` - optional additional CSS classes
-  """
-  @doc """
   Renders inline code with consistent styling.
 
   ## Slots
@@ -72,6 +63,33 @@ defmodule JfgenomicsWeb.BlogComponents do
     """
   end
 
+  @doc """
+  Renders a multi-color devicon from devicon.dev via an SVG file.
+
+  ## Attributes
+  - `name` - the icon name (e.g., "elixir", "python")
+  - `variant` - the icon variant (e.g., "original", "plain", "original-wordmark")
+  - `class` - optional additional CSS classes
+  """
+  attr :name, :string, required: true
+  attr :variant, :string, default: "original"
+  attr :class, :string, default: "w-8 h-8 inline-block"
+
+  def devicon(assigns) do
+    ~H"""
+    <img src={"/assets/icons/#{@name}/#{@name}-#{@variant}.svg"} class={[@class]} alt="" />
+    """
+  end
+
+  @doc """
+  Fetches remote source code and renders it with syntax highlighting.
+  The fetch and highlighting happen client-side via a JS hook.
+
+  ## Attributes
+  - `url` - the raw source URL to fetch
+  - `lang` - the language for syntax highlighting
+  - `class` - optional additional CSS classes
+  """
   attr :url, :string, required: true
   attr :lang, :string, required: true
   attr :class, :string, default: ""
