@@ -12,6 +12,7 @@ defmodule JfgenomicsWeb.Devicon do
   @icons Path.expand("../../assets/vendor/devicon/icons", __DIR__)
          |> Path.join("**/*.svg")
          |> Path.wildcard()
+         |> Enum.sort()
          |> Enum.map(fn path ->
            basename = Path.basename(path, ".svg")
            content = File.read!(path)

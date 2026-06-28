@@ -1,0 +1,53 @@
+<h2>Objectives</h2>
+This exercise will test the following Python features:
+<ul>
+  <li>How to work with files</li>
+  <li>How to extract gzipped files</li>
+  <li>String manipulation</li>
+  <li>Ergonomics of using lists and dictionaries</li>
+</ul>
+
+<p>
+  The output of this implementation will be a list of dictionaries with annotation data. With a file parsed like this, we will be able to more efficiently query the data. Moreover, having all the components of the annotation in data structures will allow other applications to access the parsed data. For example, when building an application that plots GFF features along the genome.
+</p>
+<h2>Implementation</h2>
+<p>
+  The implementation shown above will return a list of dictionaries that can be queried using functions that traverse the list, and access the features' annotation dictionaries. This might be all we need for basic uses, but if we want this to be part of a stable and maintainable API, we can use Python classes to encapsulate features, lists of features, and functionality associated with them.
+</p>
+<p>
+  In this iteration, we are actually going to use the code from the last section to populate our class attributes. At this point, only basic methods are going to be created. In a future installment, we will implement more functionality to the GFF parser
+</p>
+
+<p>
+  The code for this exercise can be found in
+  <a
+    href="https://github.com/biofilos/mirlangs/tree/main/python/parse_gff3"
+    class="text-primary hover:text-primary/80 underline transition-colors"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    this Github repository
+  </a>
+</p>
+<.remote_code
+  url="https://raw.githubusercontent.com/biofilos/mirlangs/main/python/parse_gff3/parse_gff.py"
+  lang="python"
+/>
+<h2>Taking it up a notch. Using Python classes</h2>
+
+<p>
+  The implementation shown above will return a list of dictionaries that can be queried using functions that traverse the list, and access the features' annotation dictionaries. This might be all we need for basic uses, but if we want this to be part of a stable and maintainable API, we can use Python classes to encapsulate features, lists of features, and functionality associated with them.
+</p>
+<p>
+  In this iteration, we are actually going to use the code from the last section to populate our class attributes. At this point, only basic methods are going to be created. In a future installment, we will implement more functionality to the GFF parser
+</p>
+
+<.remote_code
+  url="https://raw.githubusercontent.com/biofilos/mirlangs/main/python/parse_gff3/Gff.py"
+  lang="python"
+/>
+
+<h2>Conclusion</h2>
+<p>
+  Python is a very easy language to learn and mold to our needs (some would say, to a fault). The data structures available in Python are quite straight-forward to work with, and the OOP-readiness of the language makes it very easy to create objects that model both data and methods that process it, which is quite useful in bioinformatics. Other than being a bit finicky about indentation (in Python one has to indent all nested blocks with the same number of spaces), Python is very easy to write. However, it has some drawbacks. It's dynamic nature make bugs related to undefined behavior due to using incorrect types are difficult to catch, especially in big projects. There is some progress in type hinting, but in my opinion, it still feels like a work-around, which is parsed by different language servers very inconsistently. Additionally, memory allocation is done automatically, this means that one has to be very careful knowing when an operation returns a copy of an object or if the object is being updated in-place.
+</p>

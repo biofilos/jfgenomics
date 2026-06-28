@@ -39,8 +39,8 @@
       <tr :for={row <- @post.table}>
         <td>{row.learn}</td>
         <td>{row.build}</td>
-        <td :for={lang <- row.implemented}>
-          <a href={~p"/blog/#{lang.post}"}>
+        <td>
+          <a :for={lang <- row.implemented} href={~p"/blog/#{lang.post}"} class="no-underline">
             <.devicon name={lang.name} variant={lang.variant} />
           </a>
         </td>
@@ -65,9 +65,14 @@
 </pre>
 </div>
 <p>
-  can be read as: The feature with ID _ENSG00000284733_ is an _olfactory receptor_
-  _gene_ named _OR4F29_, located in chromosome _1_, from position _450,740_ to
-  _451,678_ in the minus (`-`) strand.
+  can be read as: The feature with ID <span class="font-bold">ENSG00000284733 </span>is an
+  <span class="font-bold">olfactory receptor</span>
+  <span class="font-bold">gene</span>
+  named <span class="font-bold">OR4F29</span>, located in chromosome
+  <span class="font-bold">1</span>
+  , from position <span class="font-bold">450,740</span>
+  to <span class="font-bold">451,678</span>
+  in the minus (-) strand.
 </p>
 <h5>
   Objective

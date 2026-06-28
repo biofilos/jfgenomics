@@ -16,6 +16,16 @@ defmodule Jfgenomics.Blog do
 
   @posts [
            %{
+             id: "rust-gff_parser",
+             template: :rust_gff_parser,
+             title: "Learn Rust's data structures by building a GFF parser",
+             author: "Juan Felipe Ortiz",
+             date: ~D[2025-10-19],
+             description:
+               "Learn and practice how basic data structures in Rust work, we will build a program that transform a GFF3 file of genomic annotations into an object that we can sort and query more efficiently.",
+             tags: ~w(bioinformatics rust programming)
+           },
+           %{
              id: "elixir-gff_parser",
              template: :elixir_gff_parser,
              title: "Learn Elixir's data structures by building a GFF3 parser",
@@ -24,6 +34,16 @@ defmodule Jfgenomics.Blog do
              description:
                "Learn and practice how basic data structures in Elixir work, we will build a program that transform a GFF3 file of genomic annotations into an object that we can sort and query more efficiently.",
              tags: ~w(bioinformatics elixir programming)
+           },
+           %{
+             id: "python-gff_parser",
+             template: :python_gff_parser,
+             title: "Learn Python's daa structures by building a GFF parser",
+             author: "Juan Felipe Ortiz",
+             date: ~D[2025-05-02],
+             description:
+               "Learn and practice how basic data structures in Python work, we will build a program that transform a GFF3 file of genomic annotations into an object that we can sort and query more efficiently.",
+             tags: ~w(bioinformatics python programing)
            },
            %{
              id: "mirlangs_intro",
@@ -40,6 +60,7 @@ defmodule Jfgenomics.Blog do
                  build: "GFF parser",
                  implemented: [
                    %{name: "elixir", variant: "original", post: "elixir-gff_parser"},
+                   %{name: "python", variant: "original", post: "python-gff_parser"},
                    %{name: "rust", variant: "original", post: "rust-gff_parser"}
                  ]
                }
