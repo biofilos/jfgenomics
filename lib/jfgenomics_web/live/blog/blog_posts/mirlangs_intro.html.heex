@@ -52,10 +52,13 @@
   GFF3 parser: Basic data structures and parsing
 </h4>
 <p>
-  GFF3 is a file format commonly used to store genomic annotation. It is a text file with nine columns (plus comments) used to describe data associated with genomic locations. See the specification on the [GMOD website](https://gmod.org/wiki/GFF3). For this exercise, we will focus on parsing the human gene annotation from [Ensembl](https://ensembl.org) ([download link](https://ftp.ensembl.org/pub/release-114/gff3/homo_sapiens/Homo_sapiens.GRCh38.114.gff3.gz)).
+  GFF3 is a file format commonly used to store genomic annotation. It is a text file with nine columns (plus comments) used to describe data associated with genomic locations. See the specification on the <a href="https://gmod.org/wiki/GFF3">GMOD website</a>. For this exercise, we will focus on parsing the human gene annotation from
+  <a href="https://ensembl.org">Ensembl</a>
+  (<a href="https://ftp.ensembl.org/pub/release-114/gff3/homo_sapiens/Homo_sapiens.GRCh38.114.gff3.gz">download link</a>).
 </p>
 <p>
-  In genomics (particularly in gene annotation), a _feature_ is a region of the genome with biological relevance. Genes, exons, mRNAs are features. The chromosome, start, and end of a feature are a feature's coordinates, and the attributes of a feature are called _annotations_. For example, the GFF3 record
+  In genomics (particularly in gene annotation), a <em>feature</em>
+  is a region of the genome with biological relevance. Genes, exons, mRNAs are features. The chromosome, start, and end of a feature are a feature's coordinates, and the attributes of a feature are called <em>annotations</em>. For example, the GFF3 record
 </p>
 <div class="flex justify-center">
   <pre phx-no-curly-interpolation>

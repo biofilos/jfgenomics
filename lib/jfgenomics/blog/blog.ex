@@ -38,7 +38,7 @@ defmodule Jfgenomics.Blog do
            %{
              id: "python-gff_parser",
              template: :python_gff_parser,
-             title: "Learn Python's daa structures by building a GFF parser",
+             title: "Learn Python's data structures by building a GFF parser",
              author: "Juan Felipe Ortiz",
              date: ~D[2025-05-02],
              description:
