@@ -43,7 +43,7 @@ defmodule Jfgenomics.Blog do
              date: ~D[2025-05-02],
              description:
                "Learn and practice how basic data structures in Python work, we will build a program that transform a GFF3 file of genomic annotations into an object that we can sort and query more efficiently.",
-             tags: ~w(bioinformatics python programing)
+             tags: ~w(bioinformatics python programming)
            },
            %{
              id: "mirlangs_intro",
