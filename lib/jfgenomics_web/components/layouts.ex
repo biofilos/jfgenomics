@@ -34,35 +34,55 @@ defmodule JfgenomicsWeb.Layouts do
   slot :inner_block, required: true
 
   def app(assigns) do
+    nav = [
+      %{title: "Education", url: "#"},
+      %{title: "Publications", url: "#"},
+      %{title: "Experience", url: "#"},
+      %{title: "Blog", url: ~p"/blog"}
+    ]
+
+    assigns = assign(assigns, menu: nav)
+
     ~H"""
-    <header class="navbar px-4 sm:px-6 lg:px-8">
-      <div class="flex-1">
-        <a href="/" class="flex-1 flex w-fit items-center gap-2">
-          <img src={~p"/images/logo.svg"} width="36" />
-          <span class="text-sm font-semibold">v{Application.spec(:phoenix, :vsn)}</span>
-        </a>
+    <div class="max-lg:collapse bg-base-200 lg:mb-48 shadow-sm w-full rounded-md">
+      <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
+      <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
+      <div class="collapse-title navbar">
+        <div class="navbar-start">
+          <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
+          <a class="text-xl font-bold whitespace-nowrap" href={~p"/"}>Juan Felipe Ortiz </a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li :for={it <- @menu}><a href={it.url}>{it.title}</a></li>
+          </ul>
+        </div>
+        <%!-- <div class="navbar-end"> --%>
+        <%!-- <input type="text" placeholder="Search" class="input input-bordered w-64 lg:w-auto" /> --%>
+        <%!-- </div> --%>
       </div>
-      <div class="flex-none">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <a href="https://phoenixframework.org/" class="btn btn-ghost">Website</a>
-          </li>
-          <li>
-            <a href="https://github.com/phoenixframework/phoenix" class="btn btn-ghost">GitHub</a>
-          </li>
-          <%!-- <li>
-            <
-            .theme_toggle />
-          </li> --%>
-          <li>
-            <a href="https://hexdocs.pm/phoenix/overview.html" class="btn btn-primary">
-              Get Started <span aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
+
+      <div class="collapse-content lg:hidden z-1">
+        <ul class="menu">
+          <li :for={it <- @menu}><a href={it.url}>{it.title}</a></li>
         </ul>
       </div>
-    </header>
-
+    </div>
     <main class="px-4 py-20 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl space-y-4">
         {render_slot(@inner_block)}
