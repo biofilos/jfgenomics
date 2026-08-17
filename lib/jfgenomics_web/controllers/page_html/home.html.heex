@@ -97,7 +97,7 @@
         gene duplicates evolved in the mammalian phylogeny, and the different ways in which gene
         clusters improve molecular diversity, with a specific interest in the evolution of pregnancy
         ications in studying preterm birth in humans. (and taught taught classes on
-            Latin American food at the University)
+        Latin American food at the University)
       </.milestone_card>
       <.milestone_card
         image={~p"/images/japan.jpg"}
@@ -128,17 +128,22 @@
           RIKEN Center for Biosystems Dynamics Research
         </.link>
         I developed computational tools to study the evolution of gene families in sharks, a basal. Then,
-        as an <.link
+        as an
+        <.link
           target="_blank"
           rel="noopener noreferrer"
           class="link link-primary"
-          href="https://www.riken.jp/en/careers/programs/spdr/">SPDR</.link>
+          href="https://www.riken.jp/en/careers/programs/spdr/"
+        >
+          SPDR
+        </.link>
         recipient, I worked in the
         <.link
           target="_blank"
           rel="noopener noreferrer"
           class="link link-primary"
-          href="https://www.riken.jp/en/research/labs/ims/cell_conv/">
+          href="https://www.riken.jp/en/research/labs/ims/cell_conv/"
+        >
           Laboratory for Advanced genomics Circuit
         </.link>
         at the
@@ -146,20 +151,81 @@
           target="_blank"
           rel="noopener noreferrer"
           class="link link-primary"
-          href="https://www.riken.jp/en/research/labs/ims/">
+          href="https://www.riken.jp/en/research/labs/ims/"
+        >
 
-          Center for Integrative Medical Sciences </.link> at <.link
+
+          Center for Integrative Medical Sciences
+        </.link>
+        at <.link
           target="_blank"
           rel="noopener noreferrer"
           class="link link-primary"
-          href="http://www.riken.jp/en">RIKEN</.link>, I developed data analysis and visualization
+          href="http://www.riken.jp/en"
+        >RIKEN</.link>, I developed data analysis and visualization
         applications to study chromatin dynamics in an evolutionary context.
       </.milestone_card>
     </div>
     <section>
-    <h2 class="text-4xl font-extrabold pt-8 pb-4">Development Skills</h2>
-    <p>During this journey, I have collected some cool tools. Check them out!
-    </p>
+      <h2 class="text-4xl font-extrabold pt-8 pb-4">Development Skills</h2>
+      <p class="pb-6">
+        During this journey, I have collected some cool tools. Check them out!
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <.skill_card
+          :for={set <- @skill_sets}
+          title={set.area}
+          icon={set.icon}
+          skills={set.skills}
+        />
+      </div>
+    </section>
+    <section>
+      <h2 class="text-4xl font-extrabold pt-8 pb-4">Back to the real world</h2>
+
+      <p>
+        After my post-doctoral fellowship at <.link
+          href="https://www.riken.jp/en/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >RIKEN</.link>
+        in Japan, I started my professional career as a bioinformatician and computational biologist. At
+        the <.link
+          href="https://www.gedac.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >Genomic and Data Analytics Core</.link> from the
+        <.link
+          href="https://csi.nus.edu.sg"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >Cancer Sciences Institute</.link>
+        in the <.link
+          href="https://nus.edu.sg"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >National University of Singapore</.link>, I led a great team of
+        scientists and software developers to build the cloud infrastructure the institute needed to run
+        genomic analytical pipelines at scale. This work has made a positive impact in the scientific
+        community, as it allows researchers to easily run genomic workflows in a cost-effective way from
+        an intuitive interface.
+      </p>
+      <p class="pt-4">
+        In my current role as a Senior Bioinformatics Engineer at <.link
+          href="https://lifebit.ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >Lifebit</.link>, my mission is to be the touch point with our clients in Singapore, to communicate and develop
+        technical insights to deploy and maintain the bioinformatics tools made by the company. This
+        involves a high degree of communication with stakeholders at the client's organization and
+        developers of Lifebit, to translate the needs of the clients into technical and scientific
+        products.
+      </p>
     </section>
   </div>
 </Layouts.app>

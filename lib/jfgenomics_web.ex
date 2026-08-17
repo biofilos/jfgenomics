@@ -90,6 +90,7 @@ defmodule JfgenomicsWeb do
       # Core UI components
       import JfgenomicsWeb.CoreComponents
       import JfgenomicsWeb.MilestoneCard
+      import JfgenomicsWeb.SkillCard
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS

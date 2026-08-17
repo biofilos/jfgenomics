@@ -5,6 +5,9 @@ defmodule JfgenomicsWeb.Devicon do
   SVGs are read at compile time from `assets/vendor/devicon/icons/`.
   Multi-color SVGs keep their original fills. Single-color SVGs
   inherit `currentColor` so they adapt to the surrounding text color.
+
+  After adding new icon files, force this module to recompile so they
+  are picked up, e.g. with `touch lib/jfgenomics_web/devicon.ex`.
   """
 
   use Phoenix.Component

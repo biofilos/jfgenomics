@@ -5,6 +5,8 @@
 @source "../css";
 @source "../js";
 @source "../../lib/jfgenomics_web";
+/* data modules (e.g. Jfgenomics.Skills) may reference hero-* icon classes */
+@source "../../lib/jfgenomics";
 
 /* A Tailwind plugin that makes "hero-#{ICON}" classes available.
    The heroicons installation itself is managed by your mix.exs */
