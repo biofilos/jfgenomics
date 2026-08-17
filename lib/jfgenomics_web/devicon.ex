@@ -9,7 +9,13 @@ defmodule JfgenomicsWeb.Devicon do
 
   use Phoenix.Component
 
-  @icons Path.expand("../../assets/vendor/devicon/icons", __DIR__)
+  @icons_dir Path.expand("../../assets/vendor/devicon/icons", __DIR__)
+
+  for path <- Path.wildcard(Path.join(@icons_dir, "**/*.svg")) do
+    @external_resource path
+  end
+
+  @icons @icons_dir
          |> Path.join("**/*.svg")
          |> Path.wildcard()
          |> Enum.sort()
@@ -23,6 +29,10 @@ defmodule JfgenomicsWeb.Devicon do
              else
                String.replace(content, ~r/<svg/, ~s(<svg fill="currentColor"))
              end
+
+           # Make the SVG fill its container so the component's `class` controls size
+           content =
+             String.replace(content, ~r/<svg/, ~s(<svg class="w-full h-full"))
 
            {basename, content}
          end)

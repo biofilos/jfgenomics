@@ -1,10 +1,165 @@
 <Layouts.app flash={@flash}>
-  <div class="max-w-4xl mx-auto">
-    <header class="py-20">
-      <h1 class="text-4xl font-bold tracking-tight">Juan Felipe Ortiz</h1>
-      <p class="mt-4 text-lg text-base-content/70">
-        Computational biologist working on genomics in the cloud.
-      </p>
-    </header>
+  <div class="max-w-6xl mx-auto">
+    <div class="hero bg-base-200 py-12 px-8 rounded-box">
+      <div class="hero-content flex-col lg:flex-row gap-12">
+        <div class="flex flex-col items-center text-center shrink-0">
+          <div class="avatar">
+            <div class="w-64 rounded-full ring ring-base-300 ring-offset-base-100 ring-offset-2 overflow-hidden">
+              <img alt="me on my last year in Japan" src={~p"/images/fall_tree.jpg"} />
+            </div>
+          </div>
+          <p class="mt-1 text-base-content/70">Bioinformatician, cloud advocate, food nerd</p>
+          <div class="mt-4 flex gap-4">
+            <.link
+              href="https://www.linkedin.com/in/jfortizq"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              class="text-base-content/80 hover:text-primary transition-colors"
+            >
+              <.devicon name="linkedin" class="size-8" />
+            </.link>
+            <.link
+              href="https://github.com/biofilos"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              class="text-white hover:text-primary transition-colors"
+            >
+              <.devicon name="github" class="size-8" />
+            </.link>
+          </div>
+        </div>
+        <div class="max-w-2xl">
+          <h1 class="text-5xl font-bold">Nice, to meet you!</h1>
+          <p class="pt-6 text-xl leading-relaxed">
+            Hi, I'm Juan Felipe, a bioinformatician who loves digging into the code of life.
+          </p>
+          <p class="pt-4 text-xl leading-relaxed">
+            Whether it's unraveling the mysteries of evolution, harnessing the power of cloud computing for genomic analysis, or experimenting with the latest data visualization techniques, I'm passionate about pushing boundaries and finding creative solutions to questions, problems, and puzzles.
+          </p>
+        </div>
+      </div>
+    </div>
+    <h2 class="text-4xl font-extrabold pt-8 pb-4">Background</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <.milestone_card
+        image={~p"/images/unal_green.jpg"}
+        image_alt="Jardín Botánico de San Andrés, Universidad Nacional de Colombia"
+        title="BSc. Biology"
+        subtitle="U. Nacional. Colombia"
+      >
+        As part of my thesis for Biology at the <.link
+          href="https://unal.edu.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >National University of Colombia</.link>, I started my career working on drift algae
+        and their taxonomy. Then I joined Manihot Biotec, lab specialized in plant immunity.
+        There, I learned about bioinformatics, genome annotation, molecular modelling,
+        and phylogenetics.
+      </.milestone_card>
+      <.milestone_card
+        image={~p"/images/laramie.jpg"}
+        image_alt="At Vedawoo park"
+        title="MSc. Molecular Biology"
+        subtitle="U. Wyoming. USA"
+      >
+        For my Masters degree in Molecular Biology at the <.link
+          href="www.uwyo.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >University of Wyoming</.link>, I wrote my first program, which was used to analyze how the intrinsic protein disorder in
+        flavivirus proteins has a clear phylogenetic signal.
+      </.milestone_card>
+      <.milestone_card
+        image={~p"/images/vandy_cooking.png"}
+        image_alt="Teaching how to make delicious Colombian food to my friends at the uni"
+        title="PhD. Biological Sciences"
+        subtitle="Vanderbilt U. USA"
+      >
+        In my PhD for Biological Sciences at the
+        <.link
+          href="https://as.vanderbilt.edu/rokaslab/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >
+          Rokas Lab
+        </.link>
+        at <.link
+          href="https://vanderbilt.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+        >Vanderbilt University</.link>, I studied how clusters of
+        gene duplicates evolved in the mammalian phylogeny, and the different ways in which gene
+        clusters improve molecular diversity, with a specific interest in the evolution of pregnancy
+        ications in studying preterm birth in humans. (and taught taught classes on
+            Latin American food at the University)
+      </.milestone_card>
+      <.milestone_card
+        image={~p"/images/japan.jpg"}
+        image_alt="Nice garden afternoon in Osaka"
+        title="SPDR Postdoctoral fellow"
+        subtitle="RIKEN. Japan"
+      >
+        In my postdoc I moved to the
+        <.link
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+          href="https://riken.jp"
+        >
+          RIKEN
+        </.link>
+        institute in Japan. At the
+        <.link
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+          href="https://www.bdr.riken.jp/en/research/labs/kuraku-s/index.html"
+        >
+          Laboratory for Phyloinformatics
+        </.link>
+        at the
+        <.link href="https://www.bdr.riken.jp/en/index.html">
+          RIKEN Center for Biosystems Dynamics Research
+        </.link>
+        I developed computational tools to study the evolution of gene families in sharks, a basal. Then,
+        as an <.link
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+          href="https://www.riken.jp/en/careers/programs/spdr/">SPDR</.link>
+        recipient, I worked in the
+        <.link
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+          href="https://www.riken.jp/en/research/labs/ims/cell_conv/">
+          Laboratory for Advanced genomics Circuit
+        </.link>
+        at the
+        <.link
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+          href="https://www.riken.jp/en/research/labs/ims/">
+
+          Center for Integrative Medical Sciences </.link> at <.link
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link link-primary"
+          href="http://www.riken.jp/en">RIKEN</.link>, I developed data analysis and visualization
+        applications to study chromatin dynamics in an evolutionary context.
+      </.milestone_card>
+    </div>
+    <section>
+    <h2 class="text-4xl font-extrabold pt-8 pb-4">Development Skills</h2>
+    <p>During this journey, I have collected some cool tools. Check them out!
+    </p>
+    </section>
   </div>
 </Layouts.app>
