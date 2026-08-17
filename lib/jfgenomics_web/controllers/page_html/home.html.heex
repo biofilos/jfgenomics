@@ -181,67 +181,93 @@
     <section>
       <h2 class="text-4xl font-extrabold pt-8 pb-4">Back to the real world</h2>
 
-      <p>
-        After my post-doctoral fellowship at
-        <.link
-          href="https://www.riken.jp/en/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link link-primary"
-        >
-          RIKEN
-        </.link>
-        in Japan, I started my professional career as a bioinformatician and computational biologist. At
-        the
-        <.link
-          href="https://www.gedac.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link link-primary"
-        >
-          Genomic and Data Analytics Core
-        </.link>
-        from the
-        <.link
-          href="https://csi.nus.edu.sg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link link-primary"
-        >
-          Cancer Sciences Institute
-        </.link>
-        in the <.link
-          href="https://nus.edu.sg"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link link-primary"
-        >National University of Singapore</.link>, I led a great team of
-        scientists and software developers to build the cloud infrastructure the institute needed to run
-        genomic analytical pipelines at scale. This work has made a positive impact in the scientific
-        community, as it allows researchers to easily run genomic workflows in a cost-effective way from
-        an intuitive interface.
+      <p class="pb-6">
+        After years in academia, I moved into industry — where genomics meets the real world.
       </p>
-      <p class="pt-4">
-        Then, in my role as a Senior Bioinformatics Engineer at <.link
-          href="https://lifebit.ai"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link link-primary"
-        >Lifebit</.link>, my mission is to be the touch point with our clients in Singapore, to communicate and develop
-        technical insights to deploy and maintain the bioinformatics tools made by the company. This
-        involves a high degree of communication with stakeholders at the client's organization and
-        developers of Lifebit, to translate the needs of the clients into technical and scientific
-        products.
-      </p>
-      <p class="pt-4">Now, as a senior computational biologist at <.link
-        href="https://paratussciences.com"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link link-primary"
-      >Paratus Sciences</.link>, I have been busy deploying tools and original research to accelerate our drug target discovery engine.
-      By combining Machine Learning, Evolutionary Biology, Web Technoligies, and Phylogenetics, I am empowering my team
-      to push the limits of our discovery pipeline
-      </p>
+      <ol class="ms-6 flex flex-col gap-10 border-s-2 border-primary/25">
+        <.timeline_item
+          title="Genomic and Data Analytics Core (GEDAC)"
+          icon="hero-cloud"
+          badges={["Singapore"]}
+          highlights={["Team leadership", "Cloud infrastructure", "Genomics at scale"]}
+        >
+          After my post-doctoral fellowship at
+          <.link
+            href="https://www.riken.jp/en/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link link-primary"
+          >
+            RIKEN
+          </.link>
+          in Japan, I started my professional career as a bioinformatician and computational biologist.
+          At the
+          <.link
+            href="https://www.gedac.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link link-primary"
+          >
+            Genomic and Data Analytics Core
+          </.link>
+          of the
+          <.link
+            href="https://csi.nus.edu.sg"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link link-primary"
+          >
+            Cancer Sciences Institute
+          </.link>
+          (<.link
+            href="https://nus.edu.sg"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link link-primary"
+          >National University of Singapore</.link>), I led a team of
+          scientists and software developers to build the cloud infrastructure the institute needed
+          to run genomic analytical pipelines at scale — work that has made a positive impact in the
+          scientific community by letting researchers easily run genomic workflows in a cost-effective
+          way from an intuitive interface.
+        </.timeline_item>
+        <.timeline_item
+          title="Senior Bioinformatics Engineer · Lifebit"
+          icon="hero-briefcase"
+          badges={["Singapore"]}
+          highlights={["Client liaison", "Deployment & maintenance", "Stakeholder communication"]}
+        >
+          Then, as a Senior Bioinformatics Engineer at <.link
+            href="https://lifebit.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link link-primary"
+          >Lifebit</.link>, my mission was to be the touch point with our clients in Singapore: communicating and
+          developing technical insights to deploy and maintain the bioinformatics tools made by the
+          company, with a high degree of communication between stakeholders at the client's
+          organization and developers of Lifebit, to translate the needs of the clients into
+          technical and scientific products.
+        </.timeline_item>
+        <.timeline_item
+          title="Senior Computational Biologist · Paratus Sciences"
+          icon="hero-beaker"
+          badges={["Current"]}
+          highlights={[
+            "Drug target discovery",
+            "Machine learning",
+            "Phylogenetics",
+            "Web technologies"
+          ]}
+        >
+          Now, as a senior computational biologist at <.link
+            href="https://paratussciences.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link link-primary"
+          >Paratus Sciences</.link>, I am busy deploying tools and original research to accelerate our drug target discovery
+          engine. By combining machine learning, evolutionary biology, web technologies, and
+          phylogenetics, I am empowering my team to push the limits of our discovery pipeline.
+        </.timeline_item>
+      </ol>
     </section>
   </div>
 </Layouts.app>

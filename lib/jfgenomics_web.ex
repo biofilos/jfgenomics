@@ -91,6 +91,7 @@ defmodule JfgenomicsWeb do
       import JfgenomicsWeb.CoreComponents
       import JfgenomicsWeb.MilestoneCard
       import JfgenomicsWeb.SkillCard
+      import JfgenomicsWeb.TimelineItem
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS
