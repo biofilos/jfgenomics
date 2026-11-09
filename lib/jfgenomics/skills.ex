@@ -22,7 +22,7 @@ defmodule Jfgenomics.Skills do
           %{name: "Bash", icon: "bash"},
           %{name: "R", icon: "r"},
           %{name: "Rust", icon: "rust", badge: "learning"},
-          %{name: "Elixir", icon: "elixir", badge: "learning"},
+          %{name: "Elixir", icon: "elixir"},
           %{name: "Linux", icon: "linux"}
         ]
       },
