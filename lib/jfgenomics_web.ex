@@ -89,6 +89,7 @@ defmodule JfgenomicsWeb do
       import Phoenix.HTML
       # Core UI components
       import JfgenomicsWeb.CoreComponents
+      import JfgenomicsWeb.EducationCard
       import JfgenomicsWeb.MilestoneCard
       import JfgenomicsWeb.SkillCard
       import JfgenomicsWeb.TimelineItem

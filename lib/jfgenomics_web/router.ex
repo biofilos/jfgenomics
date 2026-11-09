@@ -18,6 +18,9 @@ defmodule JfgenomicsWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/education", PageController, :education
+    get "/publications", PageController, :publications
+    get "/experience", PageController, :experience
 
     live "/blog", BlogIndexLive
     live "/blog/:id", BlogShowLive

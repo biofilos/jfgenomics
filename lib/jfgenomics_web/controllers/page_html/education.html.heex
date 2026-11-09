@@ -1,0 +1,68 @@
+<Layouts.app flash={@flash}>
+  <div class="max-w-6xl mx-auto">
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold tracking-tight">Education</h1>
+      <p class="mt-2 text-base-content/70">
+        My formal training, and the publications that came out of each degree.
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 gap-4">
+      <.education_card
+        :for={entry <- @education}
+        title={entry.title}
+        school={entry.school}
+        area={entry.area}
+        publication={entry.publication}
+        pub_link={entry.pub_link}
+      />
+    </div>
+
+    <section class="pt-12">
+      <h2 class="text-3xl font-bold tracking-tight">Awards and Grants</h2>
+      <ul class="mt-6 divide-y divide-base-300 rounded-box border border-base-300 bg-base-100 shadow-sm">
+        <li
+          :for={award <- @awards}
+          class="flex flex-wrap items-center gap-x-4 gap-y-1 p-4 sm:p-5"
+        >
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <.icon name="hero-trophy" class="size-6" />
+          </span>
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold">{award.name}</p>
+            <p class="text-sm text-base-content/70">{award.institution}</p>
+          </div>
+          <span class="rounded-full border border-base-300 bg-base-200/60 px-3 py-1 text-sm font-medium">
+            {award.time}
+          </span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="pt-12">
+      <h2 class="text-3xl font-bold tracking-tight">Courses and Workshops</h2>
+      <ul class="mt-6 divide-y divide-base-300 rounded-box border border-base-300 bg-base-100 shadow-sm">
+        <li
+          :for={course <- @courses}
+          class="flex flex-wrap items-center gap-x-4 gap-y-2 p-4 sm:p-5"
+        >
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <.icon name="hero-book-open" class="size-6" />
+          </span>
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold">{course.name}</p>
+            <p class="text-sm text-base-content/70">{course.institution}</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="rounded-full border border-base-300 bg-base-200/60 px-3 py-1 text-sm font-medium">
+              {course.place}
+            </span>
+            <span class="rounded-full border border-base-300 bg-base-200/60 px-3 py-1 text-sm font-medium">
+              {course.duration}, {course.year}
+            </span>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</Layouts.app>

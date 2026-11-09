@@ -2,7 +2,7 @@ defmodule Jfgenomics.Education do
   def list do
     [
       %{
-        title: "Doctor of Phylosophy",
+        title: "Doctor of Philosophy",
         school: "Vanderbilt University",
         area: "Biological Sciences",
         publication:
@@ -23,8 +23,7 @@ defmodule Jfgenomics.Education do
         area: "Biology",
         publication:
           "Ortiz, J. F., Gavio, B. (2010). Notes on the marine algae of the International Biosphere Reserve Seaflower, Caribbean Colombia II: diversity of drift algae in San Andres island, Caribbean Colombia. Caribbean Journal of Science 46 (2-3): 313-321",
-        pub_link:
-          "Ortiz, J. F., Gavio, B. (2010). Notes on the marine algae of the International Biosphere Reserve Seaflower, Caribbean Colombia II: diversity of drift algae in San Andres island, Caribbean Colombia. Caribbean Journal of Science 46 (2-3): 313-321"
+        pub_link: "https://doi.org/10.18475/cjos.v46i2.a19"
       }
     ]
   end

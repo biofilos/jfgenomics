@@ -35,9 +35,9 @@ defmodule JfgenomicsWeb.Layouts do
 
   def app(assigns) do
     nav = [
-      %{title: "Education", url: "#"},
-      %{title: "Publications", url: "#"},
-      %{title: "Experience", url: "#"},
+      %{title: "Education", url: ~p"/education"},
+      %{title: "Publications", url: ~p"/publications"},
+      %{title: "Experience", url: ~p"/experience"},
       %{title: "Blog", url: ~p"/blog"}
     ]
 
