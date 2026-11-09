@@ -1,6 +1,8 @@
 defmodule JfgenomicsWeb.BlogIndexLive do
   use JfgenomicsWeb, :live_view
 
+  import JfgenomicsWeb.BlogComponents
+
   alias Jfgenomics.Blog
 
   @impl true
@@ -51,12 +53,12 @@ defmodule JfgenomicsWeb.BlogIndexLive do
         <header class="mb-12">
           <h1 class="text-4xl font-bold tracking-tight">JF Genomics</h1>
           <p class="mt-2 text-base-content/70">
-            Stories on, about,and around doing computational biology in the cloud.
+            Stories on, about, and around doing computational biology in the cloud.
           </p>
         </header>
 
         <h2 class="text-3xl font-bold tracking-tight">Latest posts</h2>
-        <nav class="mt-4 mb-8 flex flex-wrap gap-2" aria-label="Filter by tag">
+        <nav id="tag-filters" class="mt-4 mb-8 flex flex-wrap gap-2" aria-label="Filter by tag">
           <.link
             patch={~p"/blog"}
             class={[
@@ -112,13 +114,7 @@ defmodule JfgenomicsWeb.BlogIndexLive do
               </p>
             </.link>
             <div class="mt-4 flex flex-wrap gap-2">
-              <.link
-                :for={tag <- post.tags}
-                patch={~p"/blog?tag=#{tag}"}
-                class="px-2 py-0.5 rounded text-xs font-medium bg-base-200 text-base-content/70 hover:bg-primary/10 hover:text-primary transition-colors"
-              >
-                {tag}
-              </.link>
+              <.tag_chip :for={tag <- post.tags} tag={tag} />
             </div>
           </article>
         </div>

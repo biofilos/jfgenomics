@@ -1,23 +1,35 @@
 defmodule JfgenomicsWeb.PageController do
   use JfgenomicsWeb, :controller
 
+  alias Jfgenomics.Content
+
   def home(conn, _params) do
-    render(conn, :home, skill_sets: Jfgenomics.Skills.list())
+    render(conn, :home,
+      skill_sets: Content.skills(),
+      recent_posts: Jfgenomics.Blog.recent_posts(3)
+    )
   end
 
   def education(conn, _params) do
     render(conn, :education,
-      education: Jfgenomics.Education.list(),
-      awards: Jfgenomics.Awards.list(),
-      courses: Jfgenomics.Courses.list()
+      page_title: "Education",
+      education: Content.education(),
+      awards: Content.awards(),
+      courses: Content.courses()
     )
   end
 
   def publications(conn, _params) do
-    render(conn, :publications, publications: Jfgenomics.Publications.list())
+    render(conn, :publications,
+      page_title: "Publications",
+      publications: Content.publications()
+    )
   end
 
   def experience(conn, _params) do
-    render(conn, :experience, experience: Jfgenomics.Experience.list())
+    render(conn, :experience,
+      page_title: "Experience",
+      experience: Content.experience()
+    )
   end
 end

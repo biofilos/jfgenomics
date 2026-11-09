@@ -22,6 +22,9 @@ defmodule JfgenomicsWeb.Router do
     get "/publications", PageController, :publications
     get "/experience", PageController, :experience
 
+    get "/blog/feed.xml", FeedController, :atom
+    get "/sitemap.xml", FeedController, :sitemap
+
     live "/blog", BlogIndexLive
     live "/blog/:id", BlogShowLive
   end

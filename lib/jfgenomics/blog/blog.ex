@@ -1,13 +1,18 @@
 defmodule Jfgenomics.Blog do
   @moduledoc """
   Blog metadata registry. Each post is a plain map with keys:
-  - :id        - URL slug (hyphens)
-  - :template  - atom matching the embedded template function name (underscores)
+  - :id        - URL slug (lowercase, hyphens only)
   - :title     - post title
   - :author    - author name
   - :date      - ~D[] date
   - :description - short description
   - :tags      - list of tag strings
+
+  The `:template` atom used to render a post is derived from `:id`
+  (hyphens become underscores) and must match a template embedded by
+  `JfgenomicsWeb.BlogPosts` — this is validated at compile time, so a
+  registry entry without a matching template (or vice versa) fails the
+  build instead of raising at runtime.
   """
 
   defmodule NotFoundError do
@@ -16,8 +21,7 @@ defmodule Jfgenomics.Blog do
 
   @posts [
            %{
-             id: "rust-gff_parser",
-             template: :rust_gff_parser,
+             id: "rust-gff-parser",
              title: "Learn Rust's data structures by building a GFF parser",
              author: "Juan Felipe Ortiz",
              date: ~D[2025-10-19],
@@ -26,8 +30,7 @@ defmodule Jfgenomics.Blog do
              tags: ~w(bioinformatics rust programming)
            },
            %{
-             id: "elixir-gff_parser",
-             template: :elixir_gff_parser,
+             id: "elixir-gff-parser",
              title: "Learn Elixir's data structures by building a GFF3 parser",
              author: "Juan Felipe Ortiz",
              date: ~D[2025-05-02],
@@ -36,8 +39,7 @@ defmodule Jfgenomics.Blog do
              tags: ~w(bioinformatics elixir programming)
            },
            %{
-             id: "python-gff_parser",
-             template: :python_gff_parser,
+             id: "python-gff-parser",
              title: "Learn Python's data structures by building a GFF parser",
              author: "Juan Felipe Ortiz",
              date: ~D[2025-05-02],
@@ -46,8 +48,7 @@ defmodule Jfgenomics.Blog do
              tags: ~w(bioinformatics python programming)
            },
            %{
-             id: "mirlangs_intro",
-             template: :mirlangs_intro,
+             id: "mirlangs-intro",
              title: "Learn new programming languages using Bioinformatics as an excuse",
              author: "Juan Felipe Ortiz",
              date: ~D[2025-04-28],
@@ -59,15 +60,33 @@ defmodule Jfgenomics.Blog do
                  learn: "Basic data structures",
                  build: "GFF parser",
                  implemented: [
-                   %{name: "elixir", variant: "original", post: "elixir-gff_parser"},
-                   %{name: "python", variant: "original", post: "python-gff_parser"},
-                   %{name: "rust", variant: "original", post: "rust-gff_parser"}
+                   %{name: "elixir", variant: "original", post: "elixir-gff-parser"},
+                   %{name: "python", variant: "original", post: "python-gff-parser"},
+                   %{name: "rust", variant: "original", post: "rust-gff-parser"}
                  ]
                }
              ]
            }
          ]
+         # The embedded-template function name is derived from the slug.
+         |> Enum.map(fn post ->
+           template = post.id |> String.replace("-", "_") |> String.to_atom()
+           Map.put(post, :template, template)
+         end)
          |> Enum.sort_by(& &1.date, {:desc, Date})
+         # Compile-time check that every registered post has a matching
+         # template embedded by JfgenomicsWeb.BlogPosts.
+         |> tap(fn _ -> Code.ensure_compiled!(JfgenomicsWeb.BlogPosts) end)
+         |> Enum.map(fn post ->
+           unless function_exported?(JfgenomicsWeb.BlogPosts, post.template, 1) do
+             raise """
+             blog post #{inspect(post.id)} expects a template named #{inspect(post.template)}, \
+             but no blog_posts/#{String.replace(post.id, "-", "_")}.html.heex file exists
+             """
+           end
+
+           post
+         end)
 
   @tags @posts |> Enum.flat_map(& &1.tags) |> Enum.uniq() |> Enum.sort()
 

@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="Jfgenomics" suffix=" · Phoenix Framework">
+    <.live_title default="Juan Felipe Ortiz" suffix=" · JF Genomics">
       {assigns[:page_title]}
     </.live_title>
+    <meta
+      name="description"
+      content={
+        assigns[:meta_description] ||
+          "Juan Felipe Ortiz — bioinformatician and computational biologist. Genomics, evolution, cloud computing, and code."
+      }
+    />
+    <meta property="og:site_name" content="JF Genomics" />
+    <meta property="og:title" content={assigns[:page_title] || "Juan Felipe Ortiz"} />
+    <meta
+      property="og:description"
+      content={
+        assigns[:meta_description] ||
+          "Juan Felipe Ortiz — bioinformatician and computational biologist. Genomics, evolution, cloud computing, and code."
+      }
+    />
+    <meta property="og:type" content={assigns[:og_type] || "website"} />
+    <meta property="og:image" content={url(~p"/images/fall_tree.jpg")} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href={~p"/favicon.ico"} sizes="any" />
+    <link rel="icon" href={~p"/favicon.png"} type="image/png" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="JF Genomics Blog"
+      href={url(~p"/blog/feed.xml")}
+    />
     <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
     </script>

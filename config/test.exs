@@ -23,6 +23,9 @@ config :jfgenomics, JfgenomicsWeb.Endpoint,
 # In test we don't send emails
 config :jfgenomics, Jfgenomics.Mailer, adapter: Swoosh.Adapters.Test
 
+# In test we don't fetch remote source code for blog posts
+config :jfgenomics, Jfgenomics.Blog.SourceCode, enabled: false
+
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false
 

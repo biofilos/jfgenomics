@@ -6,7 +6,9 @@ defmodule JfgenomicsWeb.EducationCard do
   """
   use Phoenix.Component
 
+  import JfgenomicsWeb.Card
   import JfgenomicsWeb.CoreComponents, only: [icon: 1]
+  import JfgenomicsWeb.ExtLink
 
   @doc """
   Renders an education card.
@@ -15,7 +17,8 @@ defmodule JfgenomicsWeb.EducationCard do
   - `title` - degree name, e.g. "Doctor of Philosophy" (required)
   - `school` - institution name, e.g. "Vanderbilt University" (required)
   - `area` - field of study, e.g. "Biological Sciences" (required)
-  - `publication` - representative publication citation (required)
+  - `publication` - representative publication citation; when `nil`,
+    the publication footer is omitted
   - `pub_link` - external URL for the publication (required)
   - `class` - optional additional CSS classes
 
@@ -32,16 +35,13 @@ defmodule JfgenomicsWeb.EducationCard do
   attr :title, :string, required: true
   attr :school, :string, required: true
   attr :area, :string, required: true
-  attr :publication, :string, required: true
+  attr :publication, :string, default: nil
   attr :pub_link, :string, required: true
   attr :class, :string, default: ""
 
   def education_card(assigns) do
     ~H"""
-    <article class={[
-      "flex flex-col gap-4 rounded-box border border-base-300 bg-base-100 p-6 shadow-sm transition-shadow duration-300 hover:shadow-md",
-      @class
-    ]}>
+    <.card class={["flex flex-col gap-4", @class]}>
       <header class="flex items-center gap-3">
         <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
           <.icon name="hero-academic-cap" class="size-6" />
@@ -55,18 +55,16 @@ defmodule JfgenomicsWeb.EducationCard do
         <.icon name="hero-building-library" class="size-5 shrink-0 text-base-content/60" />
         {@school}
       </p>
-      <div class="mt-auto rounded-lg border border-base-300 bg-base-200/60 p-4">
+      <div :if={@publication} class="mt-auto rounded-lg border border-base-300 bg-base-200/60 p-4">
         <p class="text-sm leading-relaxed text-base-content/80">{@publication}</p>
-        <.link
+        <.ext_link
           href={@pub_link}
-          target="_blank"
-          rel="noopener noreferrer"
           class="mt-2 inline-flex items-center gap-1 text-sm font-medium link link-primary"
         >
           Read publication <.icon name="hero-arrow-top-right-on-square" class="size-4" />
-        </.link>
+        </.ext_link>
       </div>
-    </article>
+    </.card>
     """
   end
 end

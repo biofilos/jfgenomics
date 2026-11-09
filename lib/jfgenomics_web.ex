@@ -17,7 +17,7 @@ defmodule JfgenomicsWeb do
   those modules here.
   """
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+  def static_paths, do: ~w(assets fonts images favicon.ico favicon.png robots.txt)
 
   def router do
     quote do
@@ -89,8 +89,12 @@ defmodule JfgenomicsWeb do
       import Phoenix.HTML
       # Core UI components
       import JfgenomicsWeb.CoreComponents
+      import JfgenomicsWeb.Card
       import JfgenomicsWeb.EducationCard
+      import JfgenomicsWeb.ExtLink
+      import JfgenomicsWeb.IconListItem
       import JfgenomicsWeb.MilestoneCard
+      import JfgenomicsWeb.PublicationCard
       import JfgenomicsWeb.SkillCard
       import JfgenomicsWeb.TimelineItem
 

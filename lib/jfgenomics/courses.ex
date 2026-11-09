@@ -1,4 +1,14 @@
 defmodule Jfgenomics.Courses do
+  @moduledoc """
+  The courses and workshops shown on the Education page.
+
+  Each entry is a map with atom keys: `:name`, `:institution`,
+  `:place`, `:duration` (human-readable range), and `:year`.
+  """
+
+  @behaviour Jfgenomics.Content
+
+  @impl true
   def list do
     [
       %{

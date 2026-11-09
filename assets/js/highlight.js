@@ -20,8 +20,8 @@ function getHighlighter() {
 }
 
 /**
- * Highlights code using Shiki with dual theme support.
- * Returns the highlighted HTML string.
+ * Highlights code using Shiki with the github-dark theme (the site is
+ * dark-only). Returns the highlighted HTML string.
  */
 export async function highlightCode(code, lang) {
   const highlighter = await getHighlighter();

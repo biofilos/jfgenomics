@@ -10,6 +10,7 @@ defmodule JfgenomicsWeb.SkillCard do
   """
   use Phoenix.Component
 
+  import JfgenomicsWeb.Card
   import JfgenomicsWeb.CoreComponents, only: [icon: 1]
   import JfgenomicsWeb.Devicon, only: [devicon: 1]
 
@@ -41,10 +42,7 @@ defmodule JfgenomicsWeb.SkillCard do
 
   def skill_card(assigns) do
     ~H"""
-    <article class={[
-      "flex flex-col gap-5 rounded-box border border-base-300 bg-base-100 p-6 shadow-sm transition-shadow duration-300 hover:shadow-md",
-      @class
-    ]}>
+    <.card class={["flex flex-col gap-5", @class]}>
       <header class="flex items-center gap-3">
         <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
           <.icon name={@icon} class="size-6" />
@@ -66,7 +64,7 @@ defmodule JfgenomicsWeb.SkillCard do
           </span>
         </li>
       </ul>
-    </article>
+    </.card>
     """
   end
 

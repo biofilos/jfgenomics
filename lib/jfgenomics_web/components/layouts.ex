@@ -44,12 +44,12 @@ defmodule JfgenomicsWeb.Layouts do
     assigns = assign(assigns, menu: nav)
 
     ~H"""
-    <div class="max-lg:collapse bg-base-200 lg:mb-48 shadow-sm w-full rounded-md">
+    <header class="max-lg:collapse bg-base-200 lg:mb-48 shadow-sm w-full rounded-md">
       <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
       <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
-      <div class="collapse-title navbar">
+      <nav aria-label="Main navigation" class="collapse-title navbar">
         <div class="navbar-start">
-          <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
+          <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden" aria-label="Toggle menu">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -69,20 +69,17 @@ defmodule JfgenomicsWeb.Layouts do
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">
-            <li :for={it <- @menu}><a href={it.url}>{it.title}</a></li>
+            <.nav_items menu={@menu} />
           </ul>
         </div>
-        <%!-- <div class="navbar-end"> --%>
-        <%!-- <input type="text" placeholder="Search" class="input input-bordered w-64 lg:w-auto" /> --%>
-        <%!-- </div> --%>
-      </div>
+      </nav>
 
       <div class="collapse-content lg:hidden z-1">
         <ul class="menu">
-          <li :for={it <- @menu}><a href={it.url}>{it.title}</a></li>
+          <.nav_items menu={@menu} />
         </ul>
       </div>
-    </div>
+    </header>
     <main class="px-4 py-20 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-7xl space-y-4">
         {render_slot(@inner_block)}
@@ -90,6 +87,15 @@ defmodule JfgenomicsWeb.Layouts do
     </main>
 
     <.flash_group flash={@flash} />
+    """
+  end
+
+  # Navigation links, rendered in both the desktop and the mobile menu.
+  attr :menu, :list, required: true
+
+  defp nav_items(assigns) do
+    ~H"""
+    <li :for={item <- @menu}><a href={item.url}>{item.title}</a></li>
     """
   end
 

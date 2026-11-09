@@ -1,6 +1,8 @@
 defmodule JfgenomicsWeb.BlogShowLive do
   use JfgenomicsWeb, :live_view
 
+  import JfgenomicsWeb.BlogComponents
+
   alias Jfgenomics.Blog
 
   @impl true
@@ -10,6 +12,8 @@ defmodule JfgenomicsWeb.BlogShowLive do
     {:ok,
      socket
      |> assign(:page_title, post.title)
+     |> assign(:meta_description, post.description)
+     |> assign(:og_type, "article")
      |> assign(:post, post)}
   end
 
@@ -39,13 +43,7 @@ defmodule JfgenomicsWeb.BlogShowLive do
             <span>{@post.author}</span>
           </div>
           <div class="mt-3 flex flex-wrap gap-2">
-            <.link
-              :for={tag <- @post.tags}
-              navigate={~p"/blog?tag=#{tag}"}
-              class="px-2 py-0.5 rounded text-xs font-medium bg-base-200 text-base-content/70 hover:bg-primary/10 hover:text-primary transition-colors"
-            >
-              {tag}
-            </.link>
+            <.tag_chip :for={tag <- @post.tags} tag={tag} />
           </div>
         </header>
 

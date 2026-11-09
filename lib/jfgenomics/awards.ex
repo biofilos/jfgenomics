@@ -1,4 +1,14 @@
 defmodule Jfgenomics.Awards do
+  @moduledoc """
+  The awards and grants shown on the Education page.
+
+  Each entry is a map with atom keys: `:name`, `:institution`, and
+  `:time` (human-readable date or range).
+  """
+
+  @behaviour Jfgenomics.Content
+
+  @impl true
   def list do
     [
       %{

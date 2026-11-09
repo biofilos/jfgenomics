@@ -3,6 +3,8 @@ defmodule Jfgenomics.Skills do
   The skill sets shown in the "Development Skills" section of the home page.
   """
 
+  @behaviour Jfgenomics.Content
+
   @doc """
   Returns the list of skill categories.
 
@@ -12,6 +14,7 @@ defmodule Jfgenomics.Skills do
   `"hero-*"` heroicon name for tools without a devicon, plus an optional
   `:badge` (e.g. `"learning"`).
   """
+  @impl true
   def list do
     [
       %{
